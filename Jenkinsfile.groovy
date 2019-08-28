@@ -4,10 +4,10 @@ node{
         sh "Echo Parameter added"
     }
     stage ("Install Git"){
-        sh "sudo yum install git -y"
+        sh "ssh ec2-user@${Environment} sudo yum install git -y"
     }
     stage("Pull Repo"){
-        git "https://github.com/miguelgrinberg/flask-examples.git"
+        sh "ssh ec2-user@${Environment} git clone https://github.com/miguelgrinberg/flask-examples.git"
     }
     stage("Install Requirments"){
         //sh "virtualenv /tmp/venv"
@@ -15,9 +15,9 @@ node{
         sh "echo Hello"
     }
     stage("Pip Install"){
-        sh "pip install -r requirements.txt"
+        sh "ssh ec2-user@${Environment} pip install -r ~/flask-examples/requirements.txt"
     }
     stage ("Run App"){
-        sh "python /tmp/venv/01-hello-world/hello.py"
+        sh "ssh ec2-user@${Environment} python  ~/flask-examples//01-hello-world/hello.py"
     }
 }
