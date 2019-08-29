@@ -6,6 +6,9 @@ node{
     stage ("Install Git"){
         sh "ssh ec2-user@${ENVIR} sudo yum install git python-pip echo -y"
     }
+    stage("Remove Repo"){
+        sh "ssh ec2-user@${ENVIR} sudo rm /home/ec2-user/flask-examples"
+    }
     stage("Pull Repo"){
         sh "ssh ec2-user@${ENVIR} git clone https://github.com/miguelgrinberg/flask-examples.git"
     }
