@@ -21,6 +21,6 @@ node{
         sh "ssh ec2-user@${ENVIR} sudo pip install -r /home/ec2-user/Flaskex/requirements.txt"
     }
     stage ("Run App"){
-        sh "ssh ec2-user@${ENVIR} python  /home/ec2-user/Flaskex//01-hello-world/app.py"
+        sh "ssh ec2-user@${ENVIR} python  /home/ec2-user/Flaskex/app.py"
     }
 }
