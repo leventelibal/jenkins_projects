@@ -9,6 +9,10 @@ node{
     stage("Remove Repo"){
         sh "ssh ec2-user@${ENVIR} sudo rm -rf /home/ec2-user/Flaskex"
     }
+    stage("Copy script"){
+        sh "scp script.sh ec2-user@${ENVIR}:/home/ec2-user"
+        sh "ssh ec2-user@${ENVIR} bash script.sh"
+    }
     stage("Pull Repo"){
         sh "ssh ec2-user@${ENVIR}  git clone https://github.com/leventelibal/stormpath-flask-sample.git 2> /dev/null"
     }
