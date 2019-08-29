@@ -7,7 +7,7 @@ node{
         sh "ssh ec2-user@${ENVIR} sudo yum install git python-pip -y"
     }
     stage("Remove Repo"){
-        //sh "ssh ec2-user@${ENVIR} sudo rm -rf /home/ec2-user/flask-examples"
+        sh "ssh ec2-user@${ENVIR} sudo rm -rf /home/ec2-user/Flaskex"
     }
     stage("Pull Repo"){
         sh "ssh ec2-user@${ENVIR} git clone git clone https://github.com/leventelibal/Flaskex.git"
